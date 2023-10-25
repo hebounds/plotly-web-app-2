@@ -1,6 +1,6 @@
 {
-  "short_name": "Bokeh App",
-  "name": "Bokeh React App",
+  "short_name": "Plotly App",
+  "name": "Plotly React App",
   "icons": [
     {
       "src": "favicon.ico",
