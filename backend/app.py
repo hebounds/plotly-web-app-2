@@ -4,6 +4,7 @@ from flask_cors import CORS
 import plotly.graph_objects as go
 
 import numpy as np
+import pandas as pd
 
 import time
 import datetime
@@ -20,25 +21,13 @@ CORS(app)
 @app.route('/plot1', methods=["GET"])
 def plot1():
     time1 = time.perf_counter() 
-    N = 100
-    x = np.random.rand(N)
-    y = np.random.rand(N)
-    colors = np.random.rand(N)
-    sz = np.random.rand(N) * 30
+    df = pd.read_csv('data.csv')
+    fig = go.Figure([go.Scatter(
+        x=df['Date'], 
+        y=df['Value']
+    )])
 
-    fig = go.Figure()
-    fig.add_trace(go.Scatter(
-        x=x,
-        y=y,
-        mode="markers",
-        marker=go.scatter.Marker(
-            size=sz,
-            color=colors,
-            opacity=0.6,
-            colorscale="Viridis"
-        )
-    ))
-    fig.write_image("plotly_plot.png")
+    fig.write_image("plotly_plot.png", scale=1.0)
     time2 = time.perf_counter()
     if (timingBool):
         with open('timings.txt', 'a') as timings:
