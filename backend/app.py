@@ -3,7 +3,6 @@ from flask_cors import CORS
 
 import plotly.graph_objects as go
 
-import pandas as pd
 import numpy as np
 
 import time
@@ -13,7 +12,6 @@ import datetime
 timingBool = True
 
 np.random.seed(1)
-
 
 app = Flask(__name__)
 # CORS enabled so react frontend can pull data from python backend
