@@ -27,7 +27,7 @@ def month_overflow(month: int, day: int):
       return True
     return False
 
-def synthetic_data_generation(s: int, t: int): 
+def synthetic_data_generation(s: int, t: int, y: int): 
     f = open("data.csv", "w")
     day = 1;
     month = 1;
@@ -36,12 +36,17 @@ def synthetic_data_generation(s: int, t: int):
         temp = np.array2string(np.random.rand(t), separator = ',', max_line_width=1000)
         temp = temp.replace(" ", "")
         
-        f.writelines("2023-" + "{:02d}".format(month) + "-" + "{:02d}".format(day) + "," + temp[1:len(temp)-1] + "\n")
+        f.writelines(str(y) + "-" + "{:02d}".format(month) + "-" + "{:02d}".format(day) + "," + temp[1:len(temp)-1] + "\n")
         if month_overflow(month, day):
-          month += 1
-          day = 1
+          if month == 12:
+            month = 1
+            day = 1
+            y += 1
+          else:
+            month += 1
+            day = 1
         else:
           day += 1
     f.close()
 
-synthetic_data_generation(365, 1)
+synthetic_data_generation(1825, 1, 2019)
