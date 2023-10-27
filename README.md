@@ -16,16 +16,15 @@ to make changes to bokeh plot, you must restart the server when changes are made
 
 ## Packages
 ### Python (pip install [package_name]):
-1. selenium
-2. chromedriver-binary
-3. bokeh
-4. flask
-5. flask_cors
-6. numpy
+1. kaleido
+2. plotly
+3. flask
+4. flask_cors
+5. numpy
+6. pandas
 
 ### JS (npm install [package_name]):
 1. axios
-2. @bokeh/bokehjs
-3. react
-4. react-scripts
-5. react-dom
+2. react
+3. react-scripts
+4. react-dom
