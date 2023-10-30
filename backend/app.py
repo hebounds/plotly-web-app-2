@@ -24,7 +24,12 @@ def plot1():
     df = pd.read_csv('data.csv')
     fig = go.Figure([go.Scatter(
         x=df['Date'], 
-        y=df['Value']
+        y=df['Channel1'],
+        mode='markers',
+        marker=dict(
+            color=np.random.randn(10000),
+            colorscale='Viridis'
+        )
     )])
 
     fig.write_image("plotly_plot.png", scale=1.0)
@@ -32,5 +37,5 @@ def plot1():
     if (timingBool):
         with open('timings.txt', 'a') as timings:
             curTime = datetime.datetime.now()
-            timings.write(curTime.strftime("%m/%d/%Y, %H:%M:%S") + ": " + str(time2 - time1) + "s\n")
+            timings.write(curTime.strftime("%m/%d/%Y %H:%M:%S") + "," + str(time2 - time1) + "s\n")
     return send_file("plotly_plot.png", mimetype='image/png')
